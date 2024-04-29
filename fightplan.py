@@ -111,8 +111,6 @@ def LoadFlightPlan(filename, fp):
                     latitude = float(data[0])
                     longitude = float(data[1])
                     # name = data[2]
-                    # Here you could process latitude, longitude, and name as needed
-                    # For now, let's just assume we're adding them to the flight plan
                     fp.route.append(wp.WaypointClass(latitude, longitude, ""))
                 except ValueError:
                     continue  # Skip lines where latitude or longitude couldn't be converted to float
@@ -138,20 +136,16 @@ def IsPath(fp, name1, name2):
     # Check if FlightPlan is empty
     if not fp.route:
         return False
-    
     # Find indices of name1 and name2
     index1 = SearchWaypointByName(fp, name1)
     index2 = SearchWaypointByName(fp, name2)
-    
-    # If either waypoint is not found, return False
+
     if index1 == -1 or index2 == -1:
         return False
-    
-    # If indices are the same, return True
+
     if index1 == index2:
         return True
-    
-    # Check if there is a path between name1 and name2
+
     if index1 < index2:
         return all(wp != '' for wp in fp.route[index1:index2])
     else:

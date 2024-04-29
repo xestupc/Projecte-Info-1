@@ -1,5 +1,5 @@
 
-import fightplan as fp # no sé escriure
+import flightplan as fp
 import waypoint as wp 
 
 # create flightplan and show the content 
