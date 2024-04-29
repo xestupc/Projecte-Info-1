@@ -1,9 +1,10 @@
 
 import waypoint as wp
 import fightplan as fp
-import UI_imprv as clr
+import UI_imprv as clr # for colours
 
 def is_int(value):
+    # see if input is a number to be converted to int
     try:
         int(value)
         return True
@@ -11,6 +12,7 @@ def is_int(value):
         return False
 
 def is_float(value):
+    # see if input is a valid decimal number to be converted to float
     try:
         float(value)
         return True
@@ -18,6 +20,7 @@ def is_float(value):
         return False
 
 def is_string(value):
+    # see if what you're typing is a string
     try:
         str(value)
         return True
@@ -25,6 +28,7 @@ def is_string(value):
         return False
 
 def is_inside_list_length(lst, num):
+    # check if given input index is a valid one in regards to a list length
     try:
         if 0 <= num < len(lst):
             return True
@@ -33,7 +37,8 @@ def is_inside_list_length(lst, num):
     except TypeError:
         return False
 
-# Defaults
+# Default values
+# These are set every time the program is run
 FlightPlanDefault = fp.FlightPlanFunc()
 FlightPlanDefault.route = []
 FlightPlanDefault.distance_total = ""
@@ -44,8 +49,8 @@ Exit_Program = False
 print("\n\n\nWelcome to group's 13 Phase Zero Test for the Informatica 1 project. We hope you find our program enjoyable.")
 
 while Exit_Program == False:
-    # get option --> to be used on elif statements 
 
+    # get desired option
     print("\nPlease choose between the following options in order to continue: \n")
     print("1. Create a Waypoint and add to a new FlightPlan.")
     print("2. Create a Waypoint and add to the existing FlightPlan.")
@@ -58,8 +63,7 @@ while Exit_Program == False:
     print("9. Delete a given waypoint.")
     print("0. [Exit]")
 
-    # 3 more features would be dope 
-
+    # input ooption is made sure to be a valid number and sent forward if so, else will keep looping
     chosen_option_entry = input("\nPlease enter your chosen feature: ")
     while is_int(chosen_option_entry) == False: 
         print("Wrong input type. Try again")
@@ -73,12 +77,13 @@ while Exit_Program == False:
         create_new_flightplan = False
         if len(FlightPlanDefault.route) == 0:
             create_new_flightplan = True
+            # if flightplan is empty == "does not exist" it will create a new one, to be used in next statements
         else:
             print("A flightplan already exists. Are you sure you wish to continue?")
             if input("Write 'YES' or 'NO': ") == 'yes' or 'YES':
                 create_new_flightplan = True
                 print("Previous data will be deleted.")
-            #else: create_new_flightplan = False REDUNDANT !
+            # if it already exists, we can either keep or delete the old one
 
 
         if create_new_flightplan == True:
@@ -86,6 +91,10 @@ while Exit_Program == False:
             FlightPlanDefault.distance_total = ""
             # FlightPlanDefault_Name = 
 
+            # once fp is created, we'll ask for the waypoint, first the lat, then lon and finally name
+            # all 3 parameteres have a input checking system as to make sure only a valid one gets through
+            # that is, i.g, a letter will be invalid in a latitude context 
+        
             new_waypointlat_entrada = input("Please choose a latitude for this new waypoint: ")
             while is_float(new_waypointlat_entrada) == False: 
                 print("Wrong input type. Try again")
@@ -108,6 +117,7 @@ while Exit_Program == False:
             print("New waypoint succesfully added as the ORIGIN of your flightplan.")
 
         else: 
+            # safeguard in case the user mistakes the option
             print("You seem to want to add a new waypoint on the existing flightplan. Choose option '2' next if that's the case.")
 
 
@@ -115,6 +125,8 @@ while Exit_Program == False:
         
         if len(FlightPlanDefault.route) != 0:
 
+
+            # virtually the same as option 1 just that the flightplan already exists and if not an error message pops up
             new_waypointlat_entrada = input("Please choose a latitude for this new waypoint: ")
             while is_float(new_waypointlat_entrada) == False: 
                 print("Wrong input type. Try again")
@@ -146,7 +158,9 @@ while Exit_Program == False:
 
     elif chosen_option == 3:
 
-        
+        # the distance will print no matter what, if fp is empty will print nothing ("") as it does not make sense
+        # calls the finishfp function, only calculates the distance once the user confirms the flightplan is empty
+        # and does not want to add more wps (at the moment at least)
         distance_total = fp.FinishFlightPlan(FlightPlanDefault)
         if distance_total == -1:
             print("The FlightPlan is empty. Make sure to add some Waypoints before trying to print anything. ")
@@ -160,7 +174,9 @@ while Exit_Program == False:
 
         print("Got it. Make sure to open a valid file type and place it an accessible directory." )
         path_file_name = input("Please enter the file path you wish to load: ")
-  
+        # opnes file path given by the user, who has to remember to give one where python has permission to. i.e not desktop
+        # error safeguards pop up in case something goes wrong, calls the loadfp function
+
         result = fp.LoadFlightPlan(path_file_name, FlightPlanDefault)
         if result == 0:
             print("No waypoints have been loaded. Please make sure it isn't empty.")
@@ -194,6 +210,7 @@ while Exit_Program == False:
 
 
     elif chosen_option == 7: 
+        # asks for two waypoints and checks if a path between them exists, check ispath function for more details
         if FlightPlanDefault.route == []:
             print("The flightplan is empty. No path to check for.")
 
@@ -225,7 +242,8 @@ while Exit_Program == False:
                     print("Wrong input type. Try again")
                     index_to_print_entrada = input("Please choose a Waypoint to print: ")
                 index_to_print = int(index_to_print_entrada) - 1
-
+                # very similar logic to options 1 and 2, and 5. Just that the printing section is reserved to 1
+                # indexed waypoint (as a way to know which one to print that is)
 
                 if is_inside_list_length(FlightPlanDefault.route, index_to_print) == True:
                     print(f"You've chosen to print the Waypoint number {index_to_print} in your flightplan. It contains the following data: ")
