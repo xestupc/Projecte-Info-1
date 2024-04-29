@@ -1,6 +1,7 @@
 
 import waypoint as wp
 import fightplan as fp
+import UI_imprv as clr
 
 def is_int(value):
     try:
@@ -264,9 +265,10 @@ while Exit_Program == False:
                 waypoint_to_delete_entrada = input("Please choose a Waypoint to delete: ")
             waypoint_to_delete = int(waypoint_to_delete_entrada) - 1  
 
-            borrar = input("Are you sure?")
+            borrar = input("Are you sure? This is irreversible. ")
             if borrar.lower() == "yes":
                 FlightPlanDefault.route.pop(waypoint_to_delete)
+                print("Chosen waypoint has been deleted. Remember to update your index inputs when using other options.")
             else: 
                 print("Okay. Waypoint data preserved.")
 
