@@ -6,3 +6,4 @@ Phase Zero feta, amb les seves 8 opcions per defecte i dues més afegides per vo
 Llibreries waypoint.py, flightplan.py i UI_imprv.py creades.
 
 
+w
