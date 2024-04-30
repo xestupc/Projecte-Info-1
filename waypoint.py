@@ -9,7 +9,7 @@ class WaypointClass():
         self.name = waypoint_name
 
 def waypointFunc():
-    test_waypoint = Waypoint("", "", "")
+    test_waypoint = WaypointClass("", "", "")
     return test_waypoint
 
 def LocateWaypoint(waypoint, lat, lon):
