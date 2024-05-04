@@ -1,7 +1,7 @@
 import matplotlib as plt
 import numpy as nm
 
-class graph():
+class GraphClass():
     def __init__(self, nodes, segment):
         self.nodes = nodes
         self.segment = segment
@@ -17,5 +17,6 @@ def addNode(graph, node):
        if(graph[i]==node):
            graph.nodes.append(node)
        
-def addSegment(g, name1, name2):
-    
+# def addSegment(g, name1, name2):
+
+# ???

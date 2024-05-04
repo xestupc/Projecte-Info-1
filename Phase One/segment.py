@@ -5,7 +5,7 @@ class SegmentClass():
         self.destination = destination
         self.cost = cost
 
-def segmentFunc(n1, n2):
+def SegmentFunc(n1, n2):
     distance = node.Distance(n1, n2)
     Obj_segment = SegmentClass(n1, n2, distance)
     node.AddNeighbor(n1, n2)
