@@ -11,27 +11,14 @@ def SegmentFunc(n1, n2):
     node.AddNeighbor(n1, n2)
     return Obj_segment
 
-    """
-    
-    import node 
+
+"""
+import node 
 class SegmentClass():
-    def __init__(self, origin, destination):
-        self.origin = origin
-        self.destination = destination
-        self.cost = node.Distance(self.origin, self.destination)
-        node.AddNeighbor(origin, destination)
-
-    
-
-
-
-
-
-    
-    
-    
-    """
-
-
-
+def __init__(self, origin, destination):
+    self.origin = origin
+    self.destination = destination
+    self.cost = node.Distance(self.origin, self.destination)
+    node.AddNeighbor(origin, destination)
+"""
 

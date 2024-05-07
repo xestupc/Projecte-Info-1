@@ -5,4 +5,13 @@ class NodeClass():
         self.ycord = ycord # coordenada y
         self.neighbors = neighbors # es una llista
 
-# Falten funcs addneighbor i distance
+def Node(name, x, y):
+    # constructor
+
+
+def addNeighbor(n1, n2):
+
+
+def distance(n1, n2):
+
+    

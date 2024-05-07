@@ -50,9 +50,14 @@ def crearGrafoEjemplo():
     graph.addSegment(G, "L","K")
     graph.addSegment(G, "L","F")
 
-# Main
+# Main - Phase One
 
 Grph = crearGrafoEjemplo()
 graph.plot(Grph)
 graph.plotNode(Grph, "C")
 graph.title("Grafico con nodos y sus respectivos segmentos")
+
+
+# Main - Phase Two
+
+# Code must prove the calculation of the minimum path works
