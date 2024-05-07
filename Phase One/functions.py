@@ -7,9 +7,6 @@ class Node():
 
 node1 = Node(100, 200, [])
 
-
-
-
 def addNeighbor(n1, n2):
    if n2 not in n1.veins:
    #if n2 is not in n1's neighbors list, it will be added. The program will return False
