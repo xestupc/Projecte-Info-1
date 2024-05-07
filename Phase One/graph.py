@@ -1,5 +1,6 @@
 import matplotlib as plt
 import numpy as nm
+import segment
 
 # Phase One:
 
@@ -19,7 +20,34 @@ def addNode(graph, node):
        if(graph[i]==node):
            graph.nodes.append(node)
        
-def addSegment(g, name1, name2):
+def addSegment(graph, name1, name2):
+
+    # name1 might need to be node.names (?)
+
+    i = 0
+    nodo1_Encontrado = False
+    nodo2_Encontrado = False
+    while nodo1_Encontrado == False and nodo2_Encontrado == False:
+        if graph.nodes[i] == name1:
+            nodo1 = graph.nodes[i]
+            nodo1_Encontrado == True
+
+        elif graph.nodes[i] == name2:
+            nodo2 = graph.nodes[i]
+            nodo2_Encontrado == True
+
+            i += 1
+
+    if nodo1_Encontrado == True and nodo2_Encontrado == True:
+        Segmendo = segment.SegmentFunc(nodo1, nodo2)
+        return True
+
+    else:
+        print("A segment cannot have two of the same nodes.")
+        return False
+ 
+
+
 
 def plot(g):
 
