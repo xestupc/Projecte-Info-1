@@ -17,8 +17,8 @@ wp.NameWaypoint(Waypoint2, "Test Waypoint 2")
 
 FlighPlanTest = fp.FlightPlanClass([], "")
 
-fp.SetDeparture(FlighPlanTest, Waypoint1)
-fp.AddWaypoint(FlighPlanTest, Waypoint2)
+fp.SetFpDeparture(FlighPlanTest, Waypoint1)
+fp.AddWaypointToFp(FlighPlanTest, Waypoint2)
 
 fp.ShowFlightPlan(FlighPlanTest)    
 

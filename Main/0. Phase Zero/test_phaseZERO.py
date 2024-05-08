@@ -1,6 +1,6 @@
 
 import waypoint as wp
-import fightplan as fp
+import flightplan as fp
 import UI_imprv as clr # for colours
 
 def is_int(value):
@@ -39,7 +39,7 @@ def is_inside_list_length(lst, num):
 
 # Default values
 # These are set every time the program is run
-FlightPlanDefault = fp.FlightPlanFunc()
+FlightPlanDefault = fp.FlightPlanConstructor()
 FlightPlanDefault.route = []
 FlightPlanDefault.distance_total = ""
 Exit_Program = False

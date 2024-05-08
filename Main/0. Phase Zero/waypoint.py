@@ -8,7 +8,7 @@ class WaypointClass():
         self.longitude = longitude
         self.name = waypoint_name
 
-def waypointFunc():
+def WaypointConstructor():
     test_waypoint = WaypointClass("", "", "")
     return test_waypoint
 
@@ -26,7 +26,7 @@ def ShowWaypoint(wp):
 
 # Advanced Functions:
 
-def CalculateDistance (wp1, wp2):
+def CalculateDistanceWaypoint(wp1, wp2):
     # Calculates Haversine distance of the two points.
     # Degrees to radians (?)
 

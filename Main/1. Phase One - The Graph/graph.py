@@ -1,6 +1,5 @@
 import matplotlib as plt
 import numpy as nm
-import segment
 
 # Phase One:
 
@@ -14,12 +13,14 @@ def Graphfunc():
     return test_graph
 
 def addNode(graph, node):
-   i=0
-   poner = True
-   while (i <= len[graph]):
-       if(graph[i]==node):
-           graph.nodes.append(node)
+    i = 0
+    poner = True
+    while (i <= len[graph]):
+        if(graph[i] == node):
+            graph.nodes.append(node)
+        i += 1
        
+
 def addSegment(graph, name1, name2):
 
     # name1 might need to be node.names (?)
@@ -58,5 +59,4 @@ def plotNode(g, name):
 # Phase Two:
 
 def FindShortestPath(G, nameOrg, nameDst):
-
-
+       

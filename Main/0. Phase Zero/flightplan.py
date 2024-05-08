@@ -8,12 +8,13 @@ class FlightPlanClass():
         self.distance_total = route_distance # number
 
 
-def FlightPlanFunc():
+def FlightPlanConstructor():
+    # creates and returns and empty FlightPlan object
     Obj_FlightPlan = FlightPlanClass([], "")
     return Obj_FlightPlan
 
 
-def SetDeparture(fp, wp):
+def SetFpDeparture(fp, wp):
     if not fp.route:
         fp.route.append(wp)
         return 0
@@ -22,7 +23,7 @@ def SetDeparture(fp, wp):
         return ((len(fp.route)) * -1)
     
 
-def AddWaypoint(fp, wp):
+def AddWaypointToFp(fp, wp):
     if not fp.route:
         fp.route.append(wp)
         return -1
