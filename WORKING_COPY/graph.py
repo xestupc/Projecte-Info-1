@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as nm
 import segment
-from _2_PhaseTwo import path as path_module
+import path as path_module
 import node
 
 # Phase One:

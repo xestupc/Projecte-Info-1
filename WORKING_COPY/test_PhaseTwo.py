@@ -1,9 +1,9 @@
 
 import matplotlib as plt
-from _1_PhaseOne import graph
-from _1_PhaseOne import node
-from _1_PhaseOne import segment
-from _2_PhaseTwo import path as path_module
+import graph
+import node
+import segment
+import path as path_module
 
 # Main program for Phase 1
 # Additionally, write a test program for the class Graph test_graph.py using as a base the program
