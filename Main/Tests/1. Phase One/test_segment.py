@@ -1,5 +1,5 @@
-from segment import Segment
-import node
+from _1_PhaseOne import Segment
+from _1_PhaseOne import node
 
 n1 = node.Node("A", 4, 25)
 n2 = node.Node("B", 9, 30)

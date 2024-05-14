@@ -1,4 +1,4 @@
-import waypoint as wp
+from _0_PhaseZero import waypoint as wp
 
 waypointtest1 = wp.WaypointClass(400, 300, "Test 1")
 waypointtest2 = wp.WaypointClass(500, 600, "Test 2")

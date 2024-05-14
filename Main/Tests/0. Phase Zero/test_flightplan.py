@@ -1,6 +1,6 @@
 
-import flightplan as fp
-import waypoint as wp 
+from _0_PhaseZero import flightplan as fp
+from _0_PhaseZero import waypoint as wp 
 
 # create flightplan and show the content 
 # of waypoint ist in the console

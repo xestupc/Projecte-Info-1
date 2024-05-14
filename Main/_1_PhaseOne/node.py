@@ -19,7 +19,7 @@ def addNeighbor(n1, n2):
    else:
        return False
  
-def distance (n1, n2):
+def Distance (n1, n2):
    #Calculates the Euclidean distance betwween two nodes
    distance = ((n2.x - n1.x)** 2 + (n2.y - n1.y)**2)**(1/2)
    return distance

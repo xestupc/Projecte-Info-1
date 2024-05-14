@@ -1,7 +1,7 @@
 
-import waypoint as wp
-import flightplan as fp
-import UI_imprv as clr # for colours
+from _0_PhaseZero import waypoint as wp
+from _0_PhaseZero import flightplan as fp
+from _Misc import UI_imprv as clr # for colours
 
 def is_int(value):
     # see if input is a number to be converted to int

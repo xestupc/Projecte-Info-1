@@ -1,5 +1,5 @@
 
-import node as node
+from _1_PhaseOne import node as node
 
 Node1 = node.NodeClass("A", 200, 350, [])
 Node2 = node.NodeClass("B", 400, 700, [])
