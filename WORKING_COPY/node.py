@@ -1,4 +1,4 @@
-class NodeClass():
+class NodeClass:
    def __init__(self, name, x, y, vecinos_lista):
        self.name = name # nombre
        self.x = x # X coordinate
