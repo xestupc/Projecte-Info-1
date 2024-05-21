@@ -1,8 +1,17 @@
-from graph import Graph
-from NavPoint import NavPoint
-from NavSegment import NavSegment
-from NavAirport import NavAirport
+import GraphClass
+import NavPoint
+import NavSegment
+import NavAirport
 
+class Airspace():
+    def __init__(self, NavPoints, NavSegments, NavAirports):
+        self.NavPoints = NavPoints
+        self.NavSegments = NavSegments
+        self.NavAirports = NavAirports
+
+
+
+<<<<<<< HEAD
 class AirSpace:
     def __init__(self):
         self.points =[] #List to store navigation points
@@ -77,3 +86,5 @@ class AirSpace:
 
 def buildAirGraph(air):
     
+=======
+>>>>>>> 4f057c16851d9184b04d58c15244949b5603c990
