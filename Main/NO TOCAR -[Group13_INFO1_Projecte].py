@@ -1,11 +1,15 @@
 
 # Llibreries externes
+<<<<<<< HEAD
 # =====================================================================================================================
 
+=======
+>>>>>>> origin/main
 import matplotlib as plt
 import math as math
 
 # Llibreries propies
+<<<<<<< HEAD
 # =====================================================================================================================
 """
 import UI_imprv as colorin
@@ -15,7 +19,22 @@ import waypoint as wp
 import graph as graph
 import node as node
 import segment as segment
+=======
 
+# Misc
+import UI_imprv as clr
+
+# Phase Zero
+import flightplan as fp
+import waypoint as wp
+
+# Phase One
+import graph as gr
+import node as node
+import segment as segm
+>>>>>>> origin/main
+
+# Phase Two
 import path as path
 """
 # General Utility Functions:
@@ -238,3 +257,8 @@ while Exit_Program == False:
         
 
 
+
+# Phase Three
+
+
+# Phase Four
