@@ -1,16 +1,12 @@
 
 # Llibreries externes
-<<<<<<< HEAD
 # =====================================================================================================================
-
-=======
->>>>>>> origin/main
 import matplotlib as plt
 import math as math
 
 # Llibreries propies
-<<<<<<< HEAD
 # =====================================================================================================================
+
 """
 import UI_imprv as colorin
 import flightplan as fp
@@ -19,24 +15,9 @@ import waypoint as wp
 import graph as graph
 import node as node
 import segment as segment
-=======
+"""
 
 # Misc
-import UI_imprv as clr
-
-# Phase Zero
-import flightplan as fp
-import waypoint as wp
-
-# Phase One
-import graph as gr
-import node as node
-import segment as segm
->>>>>>> origin/main
-
-# Phase Two
-import path as path
-"""
 # General Utility Functions:
 # =====================================================================================================================
 
@@ -82,6 +63,7 @@ def is_inside_of_a_given_list(list, value):
                 return True
     except TypeError:
         return False
+    
 
 # Default values:
 # =====================================================================================================================
@@ -144,6 +126,55 @@ while Exit_Program == False:
 
     if chosen_option == "a":
     # a = "Load a simple Graph"
+
+        print("You've chosen to Load an Existing Graph. Before loading the file, we must ask you something.")
+        print("Make sure that the data file follows one of these formats.")
+        print("Option 1. (simple written .txt file):")
+        print(" - Node Format:  [Node Name] [Latitude] [Longitude] ")
+        print(" - Segment Format: [Origin_Node_Name] [Destination_Node_Name]")
+        print("Option 2 (Following the 'Cat_nav.txt' example):")
+        print(" - Node Format: [Num] [Loc.X] [Latitude] [Longitude].")
+        print(" - Segment Format: ")
+        entered_format = input("Choose a format: ")
+        # Option must be 1 or 2:
+        # I can either condition for it to be inside list_lenght and int or just 1 / 2
+
+        while is_int(entered_format) == False and (entered_format != 1 or entered_format !=2):
+            print("Wrong input type. Please try again.")
+            entered_format = input("Enter your format choice: ")
+        
+        graphToLoad = graph.GraphClass([], [])
+
+        if int(entered_format) == 1:
+
+            graph_file_path = input("Enter a path for your graph file. Make sure python has acces to it. ")
+            # Name Lat Lon
+
+            try:
+                 with open(graph_file_path, 'r') as graphFile:
+                    lines = graphFile.readlines()
+                    for line in lines:
+                        node_data = line.strip().split()
+                        if len(node_data) !=3:
+                            continue # Skips non - 3 elements 
+                        try:
+                            node_name = str(node_data[0])
+                            node_latitude = float(node_data[1])
+                            node_longitude = float(node_data[2])
+                            graphToLoad.nodes.append(node.NodeClass(node_name, node_latitude, node_longitude))
+                        except ValueError:
+                            continue
+            except FileNotFoundError:
+                print("Something went wrong. File not found. Check path / permissions and try again. ")
+                            
+
+            graphToLoad.nodes
+            graphToLoad.segments
+
+
+        if int(entered_format) == 2:
+            graph_file_path = input("Enter a path for your graph file. Make sure python has acces to it. ")
+            # Num X Lat Lon
 
     # LOGIC: 
 
