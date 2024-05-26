@@ -63,7 +63,6 @@ def plotPath(G, P):
 
 def pathToKML(path, nomFile):
     with open(nomFile, "r") as file:
-        file.write()
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         file.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
         file.write('<Document>\n')
