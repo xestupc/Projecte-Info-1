@@ -103,3 +103,27 @@ def buildAirGraph(air):
         segment = graph.addSegment(node1, node2)
         
     return graph    
+
+# New Functions for Airspace.py in PHASE 4
+
+def airportsToKML(air, nomFile):
+    with open(nomFile, "r") as file:
+        file.write()
+        file.write()
+        file.write()
+
+        for airports in air.NavAirports:
+            file.write()
+            file.write()
+            file.write()
+
+# Additional Functions for Airspace.py
+
+def AirSpaceRouting(air, airport1, airport2, nomFile):
+    # Check that the two numbers are the numbers of two airports in airspace
+    if airport1 not in air.NavAirports or airport2 not in air.NavAirports:
+        print("Error: Airport names do not exist in Airspace")
+        return
+    
+    with open(nomFile, "r") as file:
+        file.write("Shortest path between" + airport1 + "and" + airport2 + ":\n")
