@@ -66,7 +66,7 @@ min_path = graph.findShortestPath(Grph, "A", "B")
 # graph.plot(Grph)
 path_module.plotPath(Grph, min_path)
 # plt.show()
-
+plt.plot(node.G, node.G, 'ro')
 # plt.plot to paint the points
 # plt.text to paint names and costs
 # plt.arrow to paint the arrows of the segments
