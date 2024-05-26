@@ -41,9 +41,7 @@ def getApproxToDest(G, P, name):
         return math.sqrt((last_node.x - dest_node.x)**2 + (last_node.y - dest_node.y)**2)
     return 0
 
-def plotPath(G, P):
-    import matplotlib.pyplot as plt
-    
+def plotPath(G, P):    
     # Plot nodes
     for node in G.nodes:
         plt.plot(node.x, node.y, 'bo')
@@ -61,3 +59,24 @@ def plotPath(G, P):
     plt.grid(True)
     plt.show()
 
+#New Function path.py PHASE 4
+
+def pathToKML(path, nomFile):
+    with open(nomFile, "r") as file:
+        file.write()
+        file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        file.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+        file.write('<Document>\n')
+
+        # Add the path to the KML file
+        for i in range(len(path)):
+            file.write('<Placemark>\n')
+            file.write('<name>' + str(i + 1) + '</name>\n')
+            file.write('<description>' + 'Path' + '</description>\n')
+            file.write('<LineString>\n')
+            file.write('<coordinates>' + path[i] + '</coordinates>\n')
+            file.write('</LineString>\n')
+            file.write('</Placemark>\n')
+
+        file.write('</Document>\n')
+        file.write('</kml>\n')
