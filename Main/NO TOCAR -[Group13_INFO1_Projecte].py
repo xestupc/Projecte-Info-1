@@ -7,8 +7,9 @@ import math as math
 # Llibreries propies
 # =====================================================================================================================
 
+
+import UI_imprv
 """
-import UI_imprv as colorin
 import flightplan as fp
 import waypoint as wp
 
@@ -82,13 +83,23 @@ list_of_possible_options = ["a","b","c","d","e","f","g","h","i","z"
 # MAIN:
 # =====================================================================================================================
 
+menu = r"""
+ __  __ ______ _   _ _    _ 
+|  \/  |  ____| \ | | |  | |
+| \  / | |__  |  \| | |  | |
+| |\/| |  __| | . ` | |  | |
+| |  | | |____| |\  | |__| |
+|_|  |_|______|_| \_|\____/  """
+
 print("\n\n\nWelcome to group's 13 INFO1 Project. We hope you find it to your liking.")
 while Exit_Program == False:
 
     # Get desired option loop
-    print("\n[ Menu ]")
+    #print("\n[ Menu ]")
+    
+    print(menu)
     print(30 * "=")
-    print("\nPlease choose between the following options in order to continue: \n")
+    print("Please choose between the following options in order to continue: \n")
     print("[a] - Load a simple Graph") # i.e the 1st week graph (??)
     print("[b] - Plot Graph")
     print("[c] - Plot a given node. ") # Ask for node name
@@ -118,6 +129,9 @@ while Exit_Program == False:
     print(type(chosen_option))
     print("\n")
 
+"""
+
+
     # Option Code
     # ---------------------------------------------------------------------------------------------------------------------
 
@@ -130,11 +144,12 @@ while Exit_Program == False:
         print("You've chosen to Load an Existing Graph. Before loading the file, we must ask you something.")
         print("Make sure that the data file follows one of these formats.")
         print("Option 1. (simple written .txt file):")
-        print(" - Node Format:  [Node Name] [Latitude] [Longitude] ")
-        print(" - Segment Format: [Origin_Node_Name] [Destination_Node_Name]")
+        print(" - Node Format:    [Node Name] [Latitude] [Longitude] ")
+        print(" - Segment Format: [Origin Node Name] [Destination Node Name]")
         print("Option 2 (Following the 'Cat_nav.txt' example):")
-        print(" - Node Format: [Num] [Loc.X] [Latitude] [Longitude].")
-        print(" - Segment Format: ")
+        print(" - Node Format:    [Num / Name] [Loc.X] [Latitude] [Longitude].")
+        print(" - Segment Format: [Origin Node Name] [Destination Node Name] [Segment Cost]")
+        print("Notes: If any given nodes have some kind of ")
         entered_format = input("Choose a format: ")
         # Option must be 1 or 2:
         # I can either condition for it to be inside list_lenght and int or just 1 / 2
@@ -284,12 +299,8 @@ while Exit_Program == False:
     else:
         print("Unknown option. Try again.")
 
-
+"""
         
 
 
 
-# Phase Three
-
-
-# Phase Four

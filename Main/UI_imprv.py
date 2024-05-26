@@ -52,6 +52,7 @@ class Console_Colors:
     CBEIGEBG2    = '\33[106m'
     CWHITEBG2    = '\33[107m'
 
+"""
 print("The following are format text options: \n")
 print(f"{Console_Colors.CEND       } This is a printing test with every color in the class! {Console_Colors.CEND}")   
 print(f"{Console_Colors.CBOLD      } This is a printing test with every color in the class! {Console_Colors.CEND}")   
@@ -105,3 +106,4 @@ print(f"{Console_Colors.CVIOLETBG2 } This is a printing test with every color in
 print(f"{Console_Colors.CBEIGEBG2  } This is a printing test with every color in the class! {Console_Colors.CEND}")  
 print(f"{Console_Colors.CWHITEBG2  } This is a printing test with every color in the class! {Console_Colors.CEND}")  
 print("\n\n\n")
+"""
