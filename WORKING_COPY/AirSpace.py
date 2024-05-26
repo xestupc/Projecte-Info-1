@@ -108,14 +108,21 @@ def buildAirGraph(air):
 
 def airportsToKML(air, nomFile):
     with open(nomFile, "r") as file:
-        file.write()
-        file.write()
-        file.write()
+        file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        file.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+        file.write('<Document>\n')
 
         for airports in air.NavAirports:
-            file.write()
-            file.write()
-            file.write()
+            file.write('<Placemark>\n')
+            file.write('<name>' + airport + '</name>\n')
+            file.write('<description>' + 'Airport' + '</description>\n')
+            file.write('<Point>\n')
+            file.write('<coordinates>' + air.points[airport] + '</coordinates>\n')
+            file.write('</Point>\n')
+            file.write('</Placemark>\n')
+
+        file.write('</Document>\n')
+        file.write('</kml>\n')
 
 # Additional Functions for Airspace.py
 

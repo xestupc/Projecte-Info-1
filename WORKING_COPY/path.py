@@ -64,6 +64,19 @@ def plotPath(G, P):
 def pathToKML(path, nomFile):
     with open(nomFile, "r") as file:
         file.write()
+        file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        file.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+        file.write('<Document>\n')
 
+        # Add the path to the KML file
+        for i in range(len(path)):
+            file.write('<Placemark>\n')
+            file.write('<name>' + str(i + 1) + '</name>\n')
+            file.write('<description>' + 'Path' + '</description>\n')
+            file.write('<LineString>\n')
+            file.write('<coordinates>' + path[i] + '</coordinates>\n')
+            file.write('</LineString>\n')
+            file.write('</Placemark>\n')
 
-        for 
+        file.write('</Document>\n')
+        file.write('</kml>\n')
