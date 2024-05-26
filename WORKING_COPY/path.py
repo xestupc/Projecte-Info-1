@@ -41,9 +41,7 @@ def getApproxToDest(G, P, name):
         return math.sqrt((last_node.x - dest_node.x)**2 + (last_node.y - dest_node.y)**2)
     return 0
 
-def plotPath(G, P):
-    import matplotlib.pyplot as plt
-    
+def plotPath(G, P):    
     # Plot nodes
     for node in G.nodes:
         plt.plot(node.x, node.y, 'bo')
@@ -61,3 +59,11 @@ def plotPath(G, P):
     plt.grid(True)
     plt.show()
 
+#New Function path.py PHASE 4
+
+def pathToKML(path, nomFile):
+    with open(nomFile, "r") as file:
+        file.write()
+
+
+        for 
