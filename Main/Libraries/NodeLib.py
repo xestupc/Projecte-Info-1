@@ -1,10 +1,10 @@
 
 class NodeClass:
-   def __init__(self, name, x, y, vecinos_lista):
+   def __init__(self, name, x, y):
        self.name = name # nombre
        self.x = x # X coordinate
        self.y = y # Y coordinate
-       self.veins = vecinos_lista # lista nodos directamente connectadoes a self
+       self.veins = [] # lista nodos directamente connectadoes a self
 
 def NodeConstructor():
     NodeObject = NodeClass("", "", "", [])

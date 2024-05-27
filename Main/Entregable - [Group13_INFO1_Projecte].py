@@ -323,15 +323,31 @@ while Exit_Program == False:
     elif chosen_option == "d":
     # d = "Plot Path" --> Ask for list of Nodes to form Path
 
-        print("In order to plot a Path we first need the Nodes we'll use for said path. Please choose how you wish to choose the Nodes: ")
+        if graphToOperate.nodes == []:
+            print("The Graph is empty, therefore, no nodes to plot. Please make sure to load a graph before making any Graph-related operations. ")
 
-    # LOGIC: 
+        else:
 
-    # ERROR CONDITIONS:
-    # Both nodes must exist
-    # A Path must be possible between the two
-    # If they are Both the same position Path is "", should we plot? Ask the user. 
-    # Input list must be valid
+            print("In order to plot a Path we first need the Nodes we'll use for said path. Please choose how you wish to choose the Nodes: ")
+            print("Option 1: You choose the Nodes 1 by 1 by entering their names, and typing END when finished.")
+            print("Option 2: You enter an array in order of the node names, like this: [A, B, C, D, E, F, G, H...].")
+            chosen_plot_path_method = input("Enter your chosen input type: ")
+            while is_int(chosen_plot_path_method) == False or is_inside_of_a_given_list([1, 2], chosen_plot_path_method) == False:
+                print("Invalid input type / non-existent option. Please try again.")
+                chosen_plot_path_method = input("Enter your chosen input type: ")
+
+            if chosen_plot_path_method == 1:
+
+
+
+
+
+            if chosen_plot_path_method == 2:
+
+                # ERROR CONDITIONS:
+                # Both nodes must exist and not be the same, if so, will give out error.
+                # A Path must be possible between the two
+                # Input list must be valid
 
 # =====================================================================================================================
 
