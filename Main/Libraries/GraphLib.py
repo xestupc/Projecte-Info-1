@@ -54,6 +54,7 @@ def plot(g):
     plt.ylabel('Y')
     plt.title('Graph Visualization')
     plt.grid(True)
+    
     plt.show()
 
 def plotNode(g, name):

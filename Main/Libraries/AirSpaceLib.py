@@ -114,10 +114,10 @@ def airportsToKML(air, nomFile):
 
         for airports in air.NavAirports:
             file.write('<Placemark>\n')
-            file.write('<name>' + airport + '</name>\n')
+            file.write('<name>' + airports + '</name>\n')
             file.write('<description>' + 'Airport' + '</description>\n')
             file.write('<Point>\n')
-            file.write('<coordinates>' + air.points[airport] + '</coordinates>\n')
+            file.write('<coordinates>' + air.points[airports] + '</coordinates>\n')
             file.write('</Point>\n')
             file.write('</Placemark>\n')
 

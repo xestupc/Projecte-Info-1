@@ -51,7 +51,7 @@ def crearGrafoEjemplo():
     graph.addSegment(G, "K","L")
     graph.addSegment(G, "L","K")
     graph.addSegment(G, "L","F")
-
+    
     return G
 
 # Main - Phase One
@@ -66,7 +66,6 @@ min_path = graph.findShortestPath(Grph, "A", "B")
 # graph.plot(Grph)
 path_module.plotPath(Grph, min_path)
 # plt.show()
-
 # plt.plot to paint the points
 # plt.text to paint names and costs
 # plt.arrow to paint the arrows of the segments
