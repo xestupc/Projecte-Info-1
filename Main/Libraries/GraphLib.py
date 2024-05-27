@@ -1,8 +1,9 @@
+
 import matplotlib.pyplot as plt
 import numpy as nm
-import segment
-import path as path_module
-import node
+import SegmentLib
+import PathLib as path_module
+import NodeLib
 
 # Phase One:
 
@@ -43,46 +44,60 @@ def plot(g):
     plt.figure(figsize=(8, 6))
     for node in g.nodes:
         plt.plot(node.x, node.y, 'bo')
-        plt.text(node.x, node.y, node.name)
+        plt.text(node.x, node.y, node.name, size="x-large", weight="bold")
 
     for segment in g.segments:
         node1 = segment.origin  
         node2 = segment.destination  
-        plt.plot([node1.x, node2.x], [node1.y, node2.y], 'k-')
+        plt.arrow(node1.x, node1.y, node2.x - node1.x, node2.y - node1.y, 
+            head_width=0.05, head_length=0.1, fc='c', ec='c')  # plot cyan arrows
+        plt.text((node1.x + node2.x) / 2, (node1.y + node2.y) / 2, 
+            f"{segment.cost:.3f}", size="x-small")  # plot segment costs
 
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.title('Graph Visualization')
-    plt.grid(True)
+    plt.grid(True, linestyle="--", color="red")
     
     plt.show()
 
 def plotNode(g, name):
-    node_found = False
-    for node in g.nodes:
-        if node.name == name:
-            node_found = True
-            plt.figure(figsize=(8, 6))
-            plt.plot(node.x, node.y, 'bo', markersize=10)
-            plt.text(node.x, node.y, node.name, fontsize=12, ha='center', va='bottom')
-            for neighbor_name in node.veins:
-                neighbor = None
-                for n in g.nodes:
-                    if n.name == neighbor_name:
-                        neighbor = n
-                        break
-                if neighbor:
-                    plt.plot([node.x, neighbor.x], [node.y, neighbor.y], 'k-')
-                    plt.text((node.x + neighbor.x) / 2, (node.y + neighbor.y) / 2, str(getSegmentCost(node, neighbor)), fontsize=10, ha='center', va='bottom')
-            plt.xlabel('X')
-            plt.ylabel('Y')
-            plt.title(f' Subgraph around node {name}')
-            plt.grid(True)
-            plt.show()
-            break
+    min_x= None
+    max_x= None
+    min_y= None
+    max_y= None
+    for i in g.nodes:
+        if i.name==name:
+            node=i
 
-    if not node_found:
-        print(f"Node {name} not found.")
+            plt.plot(i.x, i.y, color="purple", marker="p", markersize=10)
+            plt.text(i.x, i.y, i.name, size="x-large")
+        else:
+            plt.plot(i.x, i.y, color="grey", marker="p", markersize=5)
+            plt.text(i.x, i.y, i.name)
+
+        if min_x == None or i.x < min_x:
+            min_x = i.x
+
+        if max_x == None or i.x > max_x:
+            max_x = i.x
+
+        if min_y == None or i.y < min_y:
+            min_y = i.y
+
+        if max_y == None or i.y > max_y:
+            max_y = i.y
+
+
+    for i in g.segments:
+        if i.origin.name==name:
+            plt.arrow(i.origin.x , i.origin.y, (i.destination.x - i.origin.x) , (i.destination.y - i.origin.y), color="grey")
+            plt.text( (i.origin.x+((i.destination.x - i.origin.x)/2)), (i.origin.y+((i.destination.y - i.origin.y)/2)),  round(i.cost, 3))
+
+    plt.axis([min_x,max_x,min_y, max_y])
+    plt.grid()
+    plt.title("Node and segments graph")
+    plt.show()
 
 # Phase Two:
 

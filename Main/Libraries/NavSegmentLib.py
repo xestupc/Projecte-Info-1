@@ -1,3 +1,4 @@
+
 '''
 NavSegment(orig:integer, dst:integer, dist:float)
 ---------------------------------------

@@ -1,7 +1,8 @@
-import graph
-import NavPoint
-import NavSegment
-import NavAirport
+
+import GraphLib
+import NavPointLib
+import NavSegmentLib
+import NavAirportLib
 
 '''
 Airspace(Navpoint:[], NavSegments:[], NavAirports:[])
@@ -24,8 +25,6 @@ def buildAirspace(filename):
     Air = f"C:\Transport Aeri Q2\{filename}_aer.txt"
     newAirspace = Airspace(Nav, Seg, Air)
     return newAirspace
-
-
 
 '''
 Defines addPoint, which receives an AirSpace (air) and a NavPoint (point) and adds the navigation point to the airspace.

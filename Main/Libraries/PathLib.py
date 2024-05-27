@@ -1,3 +1,4 @@
+
 import matplotlib.pyplot as plt
 import math
 
@@ -55,7 +56,7 @@ def plotPath(G, P):
     
     plt.xlabel('X')
     plt.ylabel('Y')
-    plt.title('Graph with Path')
+    plt.title("Graph with Minium Path(Total Cost: {})".format(P.total_cost))
     plt.grid(True)
     plt.show()
 
