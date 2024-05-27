@@ -188,7 +188,7 @@ while Exit_Program == False:
                                 node_name = str(node_data[0])
                                 node_latitude = float(node_data[1])
                                 node_longitude = float(node_data[2])
-                                graphToOperate.nodes.append(NodeLib.NodeClass(node_name, node_latitude, node_longitude))
+                                graphToOperate.nodes.append(NodeLib.NodeClass(node_name, node_latitude, node_longitude, []))
 
                             except ValueError:
                                 continue
@@ -238,7 +238,7 @@ while Exit_Program == False:
                                 # We ignore node data (1) as its LOC_X and we dont need it.
                                 node_latitude = float(node_data[2])
                                 node_longitude = float(node_data[3])
-                                graphToOperate.nodes.append(NodeLib.NodeClass(node_name, node_latitude, node_longitude))
+                                graphToOperate.nodes.append(NodeLib.NodeClass(node_name, node_latitude, node_longitude, []))
 
                             except ValueError:
                                 continue
@@ -281,6 +281,7 @@ while Exit_Program == False:
             print("The Graph you're trying to plot is empty. Make sure to have loaded a Graph before trying to plot one.")
 
         else:
+            print("Plotting the graph...")
             GraphLib.Plot(graphToOperate)
 
         # Checked ERROR CONDITIONS:
@@ -289,17 +290,40 @@ while Exit_Program == False:
     elif chosen_option == "c":
     # c = "Plot Node" --> Ask for Node Name
 
-        input("Before choosing a node to plot, do you wish to see those available?")
-        node_to_plot_name = str(input("Please choose a valid node to plot."))
-      
-    # LOGIC: 
+        if graphToOperate.nodes == []:
+            print("The Graph is empty. Please make sure to load a graph before making any Graph-related operations. ")
 
-    # ERROR CONDITIONS:
-    # Node must exist
-    # Name must be valid / correspond
+
+        print_available_nodes_input = input("Before choosing a node to plot, do you wish to see those available?. Write 'YES or 'NO'. ").lower()
+        while print_available_nodes_input != 'yes' or print_available_nodes_input != 'no' :
+            print("Wrong input type. Try again. ")
+            print_available_nodes_input = input("Do you wish to see the available nodes?  Write 'YES or 'NO'. ").lower()
+
+        if print_available_nodes_input == 'yes':
+            print("Available nodes: ")
+            for nodes in graphToOperate.nodes:
+                print(f"Node Name: {graphToOperate.nodes.name}, Coordinates: {graphToOperate.nodes.x}, {graphToOperate.nodes.y}")
+
+        node_to_print_name = str(input("\nPlease choose a node to plot. Enter its NAME in order to find it. "))
+        print_node_exists = False
+
+        for nodes in graphToOperate.nodes:
+            if graphToOperate.nodes[0] == node_to_print_name:
+                print_node_exists = True
+
+        if print_node_exists == False:
+            print("The Node you're trying to plot does not exist. Make sure that the node exists and is loaded in the Graph.")
+
+        else:
+            GraphLib.plotNode(graphToOperate, node_to_print_name)
+
+            # Checked ERROR CONDITIONS:
+            # Node must exist & be inside graph
 
     elif chosen_option == "d":
     # d = "Plot Path" --> Ask for list of Nodes to form Path
+
+        print("In order to plot a Path we first need the Nodes we'll use for said path. Please choose how you wish to choose the Nodes: ")
 
     # LOGIC: 
 
