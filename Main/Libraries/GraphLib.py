@@ -1,8 +1,9 @@
+
 import matplotlib.pyplot as plt
 import numpy as nm
-import segment
-import path as path_module
-import node
+import SegmentLib
+import PathLib as path_module
+import NodeLib
 
 # Phase One:
 

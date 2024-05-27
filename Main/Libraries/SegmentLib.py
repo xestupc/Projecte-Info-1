@@ -1,4 +1,5 @@
-import node as node
+
+import NodeLib as node
 
 class SegmentClass():
     def __init__(self, origin, destination, cost):

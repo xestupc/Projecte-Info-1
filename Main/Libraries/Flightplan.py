@@ -1,5 +1,5 @@
 
-import waypoint as wp
+import WaypointLib as wp
 import matplotlib.pyplot as plt
 
 class FlightPlanClass():
