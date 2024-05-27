@@ -1,6 +1,5 @@
-import node
-import segment
-import graph
+from Libraries import AirSpaceLib, FlightplanLib, GraphLib, NavAirportLib, NavPointLib, NavSegmentLib, NodeLib, PathLib, SegmentLib, WaypointLib
+
 """ ===========================================================================================
 Program to test the graph
 """

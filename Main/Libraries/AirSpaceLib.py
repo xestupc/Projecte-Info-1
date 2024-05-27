@@ -3,6 +3,7 @@ import GraphLib
 import NavPointLib
 import NavSegmentLib
 import NavAirportLib
+import os 
 
 '''
 Airspace(Navpoint:[], NavSegments:[], NavAirports:[])
@@ -15,16 +16,10 @@ NavAirports: vector of NavAirports of the airspace.
 '''
 class Airspace():
     def __init__(self, NavPoints, NavSegments, NavAirports):
-        self.NavPoints = NavPoints
-        self.NavSegments = NavSegments
-        self.NavAirports = NavAirports
+        self.NavPoints = []
+        self.NavSegments = []
+        self.NavAirports = []
 
-def buildAirspace(filename):
-    Nav = f"C:\Transport Aeri Q2\{filename}_nav.txt"
-    Seg = f"C:\Transport Aeri Q2\{filename}_seg.txt"
-    Air = f"C:\Transport Aeri Q2\{filename}_aer.txt"
-    newAirspace = Airspace(Nav, Seg, Air)
-    return newAirspace
 
 '''
 Defines addPoint, which receives an AirSpace (air) and a NavPoint (point) and adds the navigation point to the airspace.
@@ -125,11 +120,17 @@ Returns: the updated airspace object, the function reads the navigation points f
 '''                
 def loadNavPoints(air, filename):
     # Load navigation points from a text file and add them to the airspace
-    with open(filename, 'r') as file:
-        for line in file:
-            point = line.strip()  # Remove leading/trailing whitespace
-            if point not in air.NavPoints:
-                air.NavPoints.append(point)
+    try:
+        with open(filename, 'r') as file:
+            line = file.readline()
+            while line:
+                data = line.split()
+                addPoint(air, NavPointLib.NavPoint(data[0], data[1], float(data[2]), float(data[3])))
+                line = file.readline()
+    except FileNotFoundError:
+        print(f"Error: El archivo {filename} no se encontró.")
+    return air
+
 
 
 
@@ -141,12 +142,20 @@ filename: string, name of the text file containing the navigation segments.
 
 Returns: the updated airspace object, the function reads the navigation segments from the file and updates the air object with these segments, then returns the modified air object.
 '''
-def loadSegments(self, filename):
+def loadSegments(air, filename):
     # Load segments between navigation points from a text file and add them to the airspace
-    with open(filename, 'r') as file:
-        for line in file:
-            numOrig, numDst, distance = line.strip().split(',')  # Split line into components
-            self.segments.append((numOrig, numDst, float(distance)))  # Convert distance to float
+    try:
+        with open(filename, 'r') as file:
+            line = file.readline()
+            while line:
+                data = line.split()
+                addSegment(air, data[0], data[1], float(data[2]))
+                line = file.readline()
+    except FileNotFoundError:
+        print(f"Error: El archivo {filename} no se encontró.")
+    return air
+
+
 
 
 
@@ -158,13 +167,23 @@ filename: string, name of the text file containing the airport names.
 
 Returns: the updated airspace object, the function reads the airport names from the file and updates the air object with these airports, then returns the modified air object.
 '''
-def loadAirports(self, filename):
+def loadAirports(air, filename):
     # Load airport names from a text file and add them to the airspace
-    with open(filename, 'r') as file:
-        for line in file:
-            airport = line.strip()  # Remove leading/trailing whitespace
-            if airport not in self.airports:
-                self.airports.append(airport)
+    try:
+        with open(filename, 'r') as file:
+            line = file.readline()
+            while line:
+                addAirport(air, line.strip())
+                sid = file.readline().strip()
+                addSID(air, line.strip(), sid)
+                star = file.readline().strip()
+                addSTAR(air, line.strip(), star)
+                line = file.readline()
+    except FileNotFoundError:
+        print(f"Error: El archivo {filename} no se encontró.")
+    return air
+
+
 
 
 
@@ -176,15 +195,13 @@ filename: string, specifies the base filename used to construct the full filenam
 Returns: an AirSpace object populated with data read from the files. The function constructs the AirSpace object and fills it with data from the files, then returns the populated object.
 '''
 def buildAirSpace(filename):
-    airspace = Airspace([], [], [])  # Create an instance of the AirSpace class
-    nav_file = filename + '_nav.txt'  # Filename for navigation points
-    seg_file = filename + '_seg.txt'  # Filename for segments
-    aer_file = filename + '_aer.txt'  # Filename for airports
-      
-    airspace.loadNavPoints(nav_file)  # Load navigation points
-    airspace.loadSegments(seg_file)  # Load segments
-    airspace.loadAirports(aer_file)  # Load airports
-    return airspace  # Return the constructed AirSpace object
+    air = Airspace([], [], []);
+
+    air = loadNavPoints(air, filename + "_nav.txt")
+    air = loadSegments(air, filename + "_seg.txt")
+    air = loadAirports(air, filename + "_aer.txt")
+
+    return air
 
 
 
@@ -197,19 +214,19 @@ Returns: a graph representing the connectivity of the airspace, the function con
 '''
 def buildAirGraph(air):
 
-    graph = graph.GraphClass()
+    graph = GraphLib.GraphClass()
     
 # Create nodes for NavPoints and NavAirports
-    for nav_point in air.nav_points:
+    for nav_point in air.NavPoints:
         node = graph.addNode(nav_point.id, nav_point.coordinates)
 
-    for nav_airport in air.nav_airports:
+    for nav_airport in air.NavAirports:
         sid = nav_airport.getSIDs()[0]
         coordinates = sid.getCoordinates()
         node = graph.addNode(nav_airport.id, coordinates)
 
 # Create segments for NavSegments
-    for nav_segment in air.nav_segments:
+    for nav_segment in air.NavSegments:
         node1 = graph.getNode(nav_segment.start_id)
         node2 = graph.getNode(nav_segment.end_id)
         segment = graph.addSegment(node1, node2)
@@ -219,7 +236,7 @@ def buildAirGraph(air):
 # New Functions for Airspace.py in PHASE 4
 
 def airportsToKML(air, nomFile):
-    with open(nomFile, "r") as file:
+    with open(nomFile, "w") as file:
         file.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         file.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
         file.write('<Document>\n')
