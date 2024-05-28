@@ -1,6 +1,4 @@
-import node
-import segment
-import graph
+from Libraries import NodeLib as node, SegmentLib, GraphLib as graph
 """ ===========================================================================================
 Program to test the graph
 """

@@ -11,7 +11,7 @@ import os
 # =====================================================================================================================
 
 
-from Main.Libraries import AirSpaceLib, FlightplanLib, GraphLib, NavAirportLib, NavPointLib, NavSegmentLib, NodeLib, PathLib, SegmentLib, WaypointLib
+from Main.Libraries import AirSpaceLib, Flightplan, GraphLib, NavAirportLib, NavPointLib, NavSegmentLib, NodeLib, PathLib, SegmentLib, WaypointLib
 from Main.Misc import UI_imprv as UI_Lib
 
 

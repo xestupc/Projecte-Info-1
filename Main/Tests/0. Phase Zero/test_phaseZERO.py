@@ -1,6 +1,6 @@
 
-from _0_PhaseZero import waypoint as wp
-from _0_PhaseZero import flightplan as fp
+from 0. Phase Zero import waypoint as wp
+from _0_Phase Zero import flightplan as fp
 from _Misc import UI_imprv as clr # for colours
 
 def is_int(value):

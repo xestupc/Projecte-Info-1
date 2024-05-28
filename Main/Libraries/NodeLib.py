@@ -1,10 +1,22 @@
 
+'''
+ModeClass(Node:[], addNeighbor:[], distance:[])
+-----------------------------------------------------
+Airspace(): Constructor. Defines class Airspace. Builds an empty AirSpace, without any point, segment or airport.
+
+NavPoints: vector of NavPoint of the airspace.
+NavSegments: vector of NavSegment of the airspace.
+NavAirports: vector of NavAirports of the airspace.
+'''
+
 class NodeClass:
    def __init__(self, name, x, y):
        self.name = name # nombre
        self.x = x # X coordinate
        self.y = y # Y coordinate
        self.veins = [] # lista nodos directamente connectadoes a self
+
+
 
 def NodeConstructor():
     NodeObject = NodeClass("", "", "", [])

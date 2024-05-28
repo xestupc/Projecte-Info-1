@@ -1,6 +1,5 @@
+from Libraries import AirSpaceLib, Flightplan, GraphLib, NavAirportLib, NavPointLib, NavSegmentLib, NodeLib, PathLib, SegmentLib,WaypointLib
 
-import AirSpaceLib
-import GraphLib
 """ ===========================================================================================
 Program to test the airspace classes
 """
